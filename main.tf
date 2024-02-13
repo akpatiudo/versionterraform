@@ -78,4 +78,6 @@ resource "azurerm_linux_virtual_machine" "volvic-prod-vm" {
     sku       = "18.04-LTS"
     version   = "latest"
   }
+
+  disable_password_authentication = false  # Enable password authentication
 }
