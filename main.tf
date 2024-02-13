@@ -45,8 +45,8 @@ resource "azurerm_linux_web_app" "volvic-prod-webapp" {
 }
 
 # Create network interface
-resource "azurerm_network_interface" "example" {
-  name                = "example-nic"
+resource "azurerm_network_interface" "volvic-prod-nic" {
+  name                = "volvic-prod-nic"
   resource_group_name = azurerm_resource_group.volvic-prod.name
   location            = azurerm_resource_group.volvic-prod.location
 
@@ -59,7 +59,7 @@ resource "azurerm_network_interface" "example" {
 
 # Create Ubuntu virtual machine
 resource "azurerm_linux_virtual_machine" "volvic-prod-vm" {
-  name                = "volvic-prod-vm"
+  name                = "volvic-vm"
   resource_group_name = azurerm_resource_group.volvic-prod.name
   location            = azurerm_resource_group.volvic-prod.location
   size                = "Standard_DS1_v2"
