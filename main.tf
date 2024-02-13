@@ -7,10 +7,10 @@ terraform {
   }
 
   backend "azurerm" {
-    storage_account_name = "storage012e"
+    storage_account_name = "olvicstorage"
     container_name       = "terraformcontainer"
     key                  = "terraform.tfstate"
-    access_key           = "+7ZLlwJapGbafBi#########"
+    access_key           = "uBIig/3Wo9ad7SBQq+V1t5eoenD4UlBhaH3ZeECTCntK3azMKSQR6jG8LU+AI3hYHYl7tDmW6jEP+AStlN2LaA=="
   }
 }
 
@@ -45,8 +45,8 @@ resource "azurerm_linux_web_app" "volvic-prod-webapp" {
 }
 
 # Create Ubuntu virtual machine
-resource "azurerm_linux_virtual_machine" "example" {
-  name                = "example-vm"
+resource "azurerm_linux_virtual_machine" "volvic-prod-vm" {
+  name                = "volvic-prod-vm"
   resource_group_name = azurerm_resource_group.volvic-prod.name
   location            = azurerm_resource_group.volvic-prod.location
   size                = "Standard_DS1_v2"
