@@ -81,3 +81,22 @@ resource "azurerm_linux_virtual_machine" "volvic-prod-vm" {
 
   disable_password_authentication = false  # Enable password authentication
 }
+
+# Create app service plan
+resource "azurerm_service_plan" "volvic-prod-plan" {
+  name                = "volvic-prod-Webappplan"
+  resource_group_name = azurerm_resource_group.volvic-prod.name
+  location            = azurerm_resource_group.volvic-prod.location
+  os_type             = "Linux"
+  sku_name            = "P1v2"
+}
+
+# Create web app
+resource "azurerm_linux_web_app" "volvic-prod-webapp" {
+  name                = "volvic-webapp"
+  resource_group_name = azurerm_resource_group.volvic-prod.name
+  location            = azurerm_service_plan.volvic-prod-plan.location
+  service_plan_id     = azurerm_service_plan.volvic-prod-plan.id
+
+  site_config {}
+}
