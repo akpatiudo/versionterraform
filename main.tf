@@ -7,10 +7,10 @@ terraform {
   }
 
   backend "azurerm" {
-    storage_account_name = "storage012e"
+    storage_account_name = "olvicstorage"
     container_name       = "terraformcontainer"
     key                  = "terraform.tfstate"
-    access_key           = "+7ZLlwJapGbafBi#########"
+    access_key           = "uBIig/3Wo9ad7SBQq+V1t5eoenD4UlBhaH3ZeECTCntK3azMKSQR6jG8LU+AI3hYHYl7tDmW6jEP+AStlN2LaA=="
   }
 }
 
