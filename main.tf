@@ -44,6 +44,19 @@ resource "azurerm_linux_web_app" "volvic-prod-webapp" {
   site_config {}
 }
 
+# Create network interface
+resource "azurerm_network_interface" "example" {
+  name                = "example-nic"
+  resource_group_name = azurerm_resource_group.volvic-prod.name
+  location            = azurerm_resource_group.volvic-prod.location
+
+  ip_configuration {
+    name                          = "ipconfig"
+    subnet_id                     = azurerm_subnet.volvic-prod-subnet.id
+    private_ip_address_allocation = "Dynamic"
+  }
+}
+
 # Create Ubuntu virtual machine
 resource "azurerm_linux_virtual_machine" "volvic-prod-vm" {
   name                = "volvic-prod-vm"
